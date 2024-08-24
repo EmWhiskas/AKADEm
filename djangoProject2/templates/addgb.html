@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block header %}
+    <div class="header">
+        <h1>Облачко</h1>
+        <div class="log">
+            {% if not user.is_authenticated %}
+                <a href="{% url 'login' %}">Вход</a>
+            {% else %}
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Выйти</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+{% block content %}
+    <h4>Вам доступно {{ storage }} Gb</h4>
+    {{ forma }}
+    <a href="{% url 'addgb' %}">
+        <button>Сменить подписку</button>
+    </a>
+{% endblock %}

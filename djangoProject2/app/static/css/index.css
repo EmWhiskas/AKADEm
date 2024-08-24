@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+.header{
+    display: flex;
+    background-color: skyblue;
+    justify-content: space-around;
+    padding: 15px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.log{
+    background-color: deepskyblue;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.category>h5{
+    margin: 13px;
+    text-decoration: none;
+    color: gray;
+    font-size: 14pt;
+
+}
+.category h4{
+    margin: 13px;
+    text-decoration: none;
+    color: black;
+    font-size: 22pt;
+}
+.category a{
+    text-decoration: none;
+    color: gray;
+}
+.category a:hover {
+    border-bottom: 1px dashed gray; /* Добавляем синее пунктирное подчёркивание */
+   }
+.category{
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+}
+.work{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    margin: 5px;
+    background-color: #03a9f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: #0288d1;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+}
+
+th {
+    background-color: #03a9f4;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+tr {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+}
+
+tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tr:last-of-type {
+    border-bottom: 2px solid #03a9f4;
+}
+
+.logout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.more{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    width: 250px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+
+}

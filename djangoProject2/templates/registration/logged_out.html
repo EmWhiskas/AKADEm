@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
+	<div class="header">
+        <h1>Облачко</h1>
+    </div>
+    <div class="logout">
+        <h1>Вы вышли из аккаунта</h1>
+        <a href="{% url 'login' %}"><button>Войти</button></a>
+    </div>
+    
+
+{% endblock %}

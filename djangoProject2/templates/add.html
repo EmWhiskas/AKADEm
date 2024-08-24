@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>Крутое облако</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/look.css' %}">
+    <link rel="stylesheet" href="{% static 'css/add.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+    {% block header %}
+    <div class="header">
+        <h1>Облачко</h1>
+        <div class="log">
+            {% if not user.is_authenticated %}
+                <a href="{% url 'login' %}">Вход</a>
+            {% else %}
+                <form action="{% url 'home' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Назад</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+
+    <div class="make">
+        <div class="header">
+            <h1>Добавление файла</h1>
+        </div>
+        <form id="fileForm" action="" method="post", enctype="multipart/form-data">
+            {% csrf_token %}
+            <div id="step2" class='make3'>
+                <div class="field-container">
+                    <h2>Отправляй файл</h2>
+                    {{ forma }}
+                </div>
+            </div>
+            <button type="submit">Добавить файл</button>
+        </form>
+
+{% endblock %}

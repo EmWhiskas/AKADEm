@@ -1,0 +1,99 @@
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>Крутое облако</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/look.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/add.css' %}">#}
+
+</head>
+{% endblock %}
+
+{% block content %}
+    {% block header %}
+    <div class="header">
+        <h1>Облачко</h1>
+        <div class="log">
+            {% if not user.is_authenticated %}
+                <a href="{% url 'login' %}">Вход</a>
+            {% else %}
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Выйти</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+
+    <div class="main">
+        <div class="category">
+            <h4>Поиск по категориям 🔍︎</h4>
+            <h5><a href="{% url 'home' %}">Главная</a></h5>
+            <h5><a href="{% url 'look' 'Ф'%}">Фото</a></h5>
+            <h5><a href="{% url 'look' 'В'%}">Видео</a></h5>
+            <h5><a href="{% url 'look' 'Д'%}">Документы</a></h5>
+            <form action="{% url 'add' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Добавить файл +</button>
+            </form>
+            <form action="{% url 'gb' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Хочу больше</button>
+            </form>
+            <h4>Занято {{ total_file_size|floatformat:2  }}Gb из {{ limit|floatformat:2 }} Gb</h4>
+        </div>
+
+        <div class="work">
+            {% if files %}
+                {% if files.count < 5 %}
+                <table>
+                    <tr>
+                        <th>Файл</th>
+                        <th>Иконка</th>
+                        <th>Скачать</th>
+                    </tr>
+                    {% for file in files %}
+                    <tr>
+                        <td>{{ file.name }}</td>
+                        <td>
+                            <img src="{% static file.img %}" alt="" width="256">
+                        </td>
+                        <td>
+                            <a href="{% static file.file %}" download>
+                                <button>Скачать файл</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                    {% else %}
+                    <div class="more">
+                        {% for file in files %}
+                        <div class="card">
+                            <img src="{% static file.img %}" alt="", width="250px">
+                            <div class="info">
+                                <h4>{{ file.name }}</h4>
+                                <a href="{% static file.file %}" download>
+                                    <button>Скачать файл</button>
+                                </a> 
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+            {% else %}
+                <h2>Добавьте файлы быстро и удобно</h2>
+                <form action="{% url 'add' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Добавить файл +</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+     
+{% endblock %}
+
+</body>
+</html>
